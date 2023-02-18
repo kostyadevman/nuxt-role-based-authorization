@@ -1,9 +1,9 @@
 <template>
   <nav v-if="currentUser" class="navbar navbar-expand navbar-dark bg-dark">
     <div class="navbar-nav">
-      <nuxt-link to="/" class="nav-item nav-link">Home</nuxt-link>
-      <nuxt-link v-if="isAdmin" to="/admin" class="nav-item nav-link">Admin</nuxt-link>
-      <a @click="logout" class="nav-item nav-link">Logout</a>
+      <nuxt-link to="/" class="nav-item nav-link">Главная</nuxt-link>
+      <nuxt-link v-if="isAdmin" to="/admin" class="nav-item nav-link">Панель администратора</nuxt-link>
+      <a @click="logout" class="nav-item nav-link">Выйти</a>
     </div>
   </nav>
 </template>

@@ -15,7 +15,7 @@
         <a
           href="http://jasonwatmore.com/post/2019/03/08/vuejs-role-based-authorization-tutorial-with-example"
           target="_top"
-          >Vue.js - Role Based Authorization Tutorial & Example</a
+          >Nuxt.js - Пример и руководство авторизации пользователей на основе ролей</a
         >
       </p>
       <p>

@@ -1,7 +1,7 @@
 {
   "name": "nuxt-role-based-authorization",
   "version": "1.0.0",
-  "description": "nuxt-role-based-authorization",
+  "description": "Nuxt.js - Пример и руководство авторизации пользователей на основе ролей",
   "private": true,
   "scripts": {
     "dev": "nuxt",

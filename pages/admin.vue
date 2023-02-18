@@ -1,9 +1,9 @@
 <template>
     <div>
-    <h1>Admin</h1>
-    <p>This page can only be accessed by administrators.</p>
+    <h1>Панель администратора</h1>
+    <p>Эта страница доступна только администраторам.</p>
     <div>
-      All users from secure (admin only) api end point:
+      Все пользователи (только для администраторов) конечной точки api:
       <ul v-if="users.length">
         <li v-for="user in users" :key="user.id">
           {{ user.firstName + " " + user.lastName }}

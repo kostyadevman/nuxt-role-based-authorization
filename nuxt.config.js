@@ -14,9 +14,21 @@ export default {
         content: "Official Nuxt.js starter for CodeSandBox"
       }
     ],
-    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
-    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
+    link: [
+      { 
+        rel: "icon", 
+        type: "image/x-icon", 
+        href: "/favicon.ico" 
+      }
+    ],
+    link: [
+      { 
+        rel: "stylesheet",
+        href: "//netdna.bootstrapcdn.com/bootstrap/4.2.0/css/bootstrap.min.css" 
+      }
+    ],
   },
+  ssr: false,
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -38,6 +50,8 @@ export default {
    ** Doc: https://nuxtjs.org/docs/2.x/directory-structure/plugins
    */
   plugins: [
-    {src: '~/plugins/vuelidate.js'}
-  ]
+    {src: '~/plugins/vuelidate.js'},
+    {src: '~/plugins/backend.js'},
+    {src: '~/plugins/app-router.js'}
+  ],
 };

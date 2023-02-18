@@ -41,13 +41,11 @@
 </template>
 
 <script>
-import useVuelidate from 'vuelidate'
 import { required } from 'vuelidate/lib/validators'
-
-// import { router } from "../_helpers/router";
-// import { authenticationService } from "../_services/authentication.service";
+import { authenticationService } from "~/_services/authentication.service";
 
 export default {
+  template: 'empty',
   data() {
     return {
       username: "",
@@ -62,13 +60,13 @@ export default {
     username: { required },
     password: { required }
   },
-  // created() {
-  //   if (authenticationService.currentUserValue) {
-  //     return router.push("/");
-  //   }
+  created() {
+    if (authenticationService.currentUserValue) {
+      return router.push("/");
+    }
 
-  //   this.returnUrl = this.$route.query.returnUrl || "/";
-  // },
+    this.returnUrl = this.$route.query.returnUrl || "/";
+  },
   methods: {
     onSubmit() {
       this.submitted = true;
@@ -80,7 +78,7 @@ export default {
 
       this.loading = true;
       authenticationService.login(this.username, this.password).then(
-        user => router.push(this.returnUrl),
+        user => this.$router.push(this.returnUrl),
         error => {
           this.error = error;
           this.loading = false;

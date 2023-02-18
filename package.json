@@ -11,6 +11,10 @@
     "post-update": "yarn upgrade --latest"
   },
   "dependencies": {
-    "nuxt": "^2.15.0"
+    "nuxt": "^2.15.0",
+    "vuelidate": "^0.7.7"
+  },
+  "engines": {
+    "node": ">=16.0.0 <17.0.0"
   }
 }

@@ -54,6 +54,16 @@ export default {
   plugins: [
     {src: '~/plugins/vuelidate.js'},
     {src: '~/plugins/backend.js'},
-    {src: '~/plugins/app-router.js'}
   ],
+  router: {
+    middleware: ['auth'],
+    extendRoutes(routes, resolve) {
+      routes.push(
+        { 
+          path: "*",
+          component: resolve(__dirname, 'pages/index.vue')
+        }
+      )
+    }
+  }
 };

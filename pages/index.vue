@@ -2,7 +2,7 @@
   <div>
     <h1>Главная</h1>
     <p>Вы залогинены с Vue.js & JWT!!</p>
-    <p>Ваша роль: <strong>{{ currentUser.role }}</strong>.</p>
+    <p >Ваша роль: <strong>{{ currentUser.role }}</strong>.</p>
     <p>Эта страница доступна всем аутентифицированным пользователям.</p>
     <div>
         Текущий пользователь защиoщенной конечной точки api:
@@ -14,8 +14,8 @@
 </template>
 
 <script>
-import { authenticationService } from '~/_services/authentication.service';
-import { userService } from '~/_services/user.service';
+import { authenticationService } from '../_services/authentication.service';
+import { userService } from '../_services/user.service';
 
 export default {
     data() {
@@ -25,10 +25,14 @@ export default {
         };
     },
     created() {
-        if (!this.currentUser) this.$router.push("/login");
+      if (this.currentUser) {
         userService
             .getById(this.currentUser.id)
             .then(user => (this.userFromApi = user));
+      } else {
+        this.$router.push("/login");
+      }
+
     }
 };
 </script>

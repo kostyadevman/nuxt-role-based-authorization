@@ -16,8 +16,10 @@
 <script>
 import { authenticationService } from "~/_services/authentication.service";
 import { userService } from "~/_services/user.service";
+import { Role } from "~/_helpers/role";
 
 export default {
+  meta: { authorize: [Role.Admin] },
   data() {
     return {
       user: authenticationService.currentUserValue,
@@ -25,6 +27,7 @@ export default {
     };
   },
   created() {
+    // админ получает записи всех пользователей
     userService.getAll().then(users => (this.users = users));
   }
 };

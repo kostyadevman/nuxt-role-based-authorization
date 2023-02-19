@@ -1,5 +1,11 @@
-import { authenticationService } from "../_services/authentication.service";
+import { authenticationService } from "~/_services/authentication.service";
 
+/**
+ * опции запросов
+ * название функции отражает смысл метода
+ * get() - method: "GET"
+ * и к каждому запросу прикрепляем заголовки
+ */
 export const requestOptions = {
   get() {
     return {
@@ -36,6 +42,7 @@ export const requestOptions = {
   }
 };
 
+// к заголовкам добавляем заголовок авторизации с токеном
 function headers() {
   const currentUser = authenticationService.currentUserValue || {};
   const authHeader = currentUser.token

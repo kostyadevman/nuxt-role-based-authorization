@@ -1,6 +1,12 @@
 <template>
   <div>
-    <Navbar />
+  <nav v-if="currentUser" class="navbar navbar-expand navbar-dark bg-dark">
+    <div class="navbar-nav">
+      <nuxt-link to="/" class="nav-item nav-link">Главная</nuxt-link>
+      <nuxt-link v-if="isAdmin" to="/admin" class="nav-item nav-link">Панель администратора</nuxt-link>
+      <a @click="logout" class="nav-item nav-link">Выйти</a>
+    </div>
+  </nav>
     <div class="jumbotron">
       <div class="container">
         <div class="row">
@@ -26,12 +32,32 @@
   </template>
   
   <script>
-  import Navbar from '@/components/Navbar'
-  export default {
-    components: {
-      Navbar
+import { authenticationService } from "~/_services/authentication.service";
+import { Role } from "~/_helpers/role";
+
+export default {
+  data() {
+    return {
+      currentUser: null
+    };
+  },
+  computed: {
+    isAdmin() {
+      return this.currentUser && this.currentUser.role === Role.Admin;
+    }
+  },
+  created() {
+    // подписываемся на объект пользователя
+    authenticationService.currentUser.subscribe(x => (this.currentUser = x));
+  },
+  methods: {
+    // выходим из аккаунта и переход на страницу логина
+    logout() {
+      authenticationService.logout();
+      this.$router.push("/login");
     }
   }
+};
   </script>
   
   

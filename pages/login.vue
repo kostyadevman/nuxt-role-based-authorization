@@ -45,7 +45,6 @@ import { required } from 'vuelidate/lib/validators'
 import { authenticationService } from "~/_services/authentication.service";
 
 export default {
-  template: 'empty',
   data() {
     return {
       username: "",
@@ -61,16 +60,20 @@ export default {
     password: { required }
   },
   created() {
+    console.log(`app`, this.$app)
+    // перенаправляем на главную страницу, если пользователь залогинен
     if (authenticationService.currentUserValue) {
-      return router.push("/");
+      return this.$router.push("/");
     }
 
+    // получить обратный адрес из параметров маршрута или по умолчанию "/"
     this.returnUrl = this.$route.query.returnUrl || "/";
   },
   methods: {
     onSubmit() {
       this.submitted = true;
 
+      // проходим валидацию логина и пароля
       this.$v.$touch();
       if (this.$v.$invalid) {
         return;

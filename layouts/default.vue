@@ -2,9 +2,9 @@
   <div>
   <nav v-if="currentUser" class="navbar navbar-expand navbar-dark bg-dark">
     <div class="navbar-nav">
-      <nuxt-link to="/" class="nav-item nav-link">Главная</nuxt-link>
+      <nuxt-link exact to="/" class="nav-item nav-link">Главная</nuxt-link>
       <nuxt-link v-if="isAdmin" to="/admin" class="nav-item nav-link">Панель администратора</nuxt-link>
-      <a @click="logout" class="nav-item nav-link">Выйти</a>
+      <a @click="logout"  class="nav-item nav-link">Выйти</a>
     </div>
   </nav>
     <div class="jumbotron">
@@ -61,3 +61,8 @@ export default {
   </script>
   
   
+<style scoped>
+a {
+  cursor: pointer;
+}
+</style>
